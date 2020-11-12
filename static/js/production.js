@@ -12,7 +12,7 @@ var width = svgWidth - margin.left - margin.right;
 var height = svgHeight - margin.top - margin.bottom;
 
 // Create an SVG wrapper, append an SVG group that will hold our chart, and shift the latter by left and top margins.
-var svg = d3.select(".chart")
+var svg = d3.select(".chart2")
   .append("svg")
   .attr("width", svgWidth)
   .attr("height", svgHeight);
@@ -21,7 +21,7 @@ var chartGroup = svg.append("g")
   .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
 // Import Data
-d3.csv("../assets/data/ProductionData.csv").then(function(coordData) {
+d3.csv("static/data/ProductionData.csv").then(function(coordData) {
 
     // Step 1: Parse Data/Cast as numbers
     // ==============================
@@ -31,7 +31,7 @@ d3.csv("../assets/data/ProductionData.csv").then(function(coordData) {
       data.wellname = +data.Name;
       data.Cumm = +data.CumOilBbl;
       data.FracUplift = +data.FracUpliftBbl_d
-      // console.log(data.FracUplift)
+      console.log(data.FracUplift)
     });
     console.log(coordData)
 
@@ -93,7 +93,7 @@ d3.csv("../assets/data/ProductionData.csv").then(function(coordData) {
 
     // Step 7: Create tooltip in the chart
     // ==============================
-    chartGroup.call(toolTip);
+    // chartGroup.call(toolTip);
 
     // Step 8: Create event listeners to display and hide the tooltip
     // ==============================

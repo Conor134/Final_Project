@@ -21,7 +21,7 @@ var chartGroup = svg.append("g")
   .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
 // Import Data
-d3.csv("../assets/data/ProductionData.csv").then(function(coordData) {
+d3.csv("static/data/ProductionData.csv").then(function(coordData) {
 
     // Step 1: Parse Data/Cast as numbers
     // ==============================
@@ -67,8 +67,8 @@ d3.csv("../assets/data/ProductionData.csv").then(function(coordData) {
     .append("circle")
     .attr("cx", d => xLinearScale(d.XCoord))
     .attr("cy", d => yLinearScale(d.YCoord))
-    .attr("r", d => d.FracUplift*2)
-    .attr("fill", "red")
+    .attr("r", d => d.CumOilBbl/1500000)
+    .attr("fill", "blue")
     .attr("opacity", ".5");
 
     var circleLabels = chartGroup.selectAll().data(coordData).enter().append("text");
@@ -88,7 +88,7 @@ d3.csv("../assets/data/ProductionData.csv").then(function(coordData) {
       .attr("class", "tooltip")
       .offset([0, 0])
       .html(function(d) {
-        return (`${d.Name}<br>Frac Uplift: ${d.FracUplift}`);
+        return (`${d.Name}<br>CummProd (k bbl): ${d.CumOilBbl/1000}`);
       });
 
     // Step 7: Create tooltip in the chart

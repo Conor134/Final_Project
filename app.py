@@ -20,7 +20,7 @@ conn=engine.connect()
 
 
 
-@app.route("/production")
+@app.route("/production_data")
 def datatest():
     
     data = pd.read_sql("select * from production", conn)
@@ -40,24 +40,21 @@ def datatest():
 #     return var2
 
 @app.route("/")
-def html():
-    
-    return render_template("PerfsFracs_test.html")
+def html():   
+    return render_template("PerfsFracs.html")
 
-@app.route("/dashboard.html")
-def dashboard():
-    
-    return render_template("dashboard.html")
 
-# @app.route("/data.html")
-# def datasources():
-    
-#     return render_template("data.html")
+@app.route("/production")
+def dashboard():    
+    return render_template("production.html")
 
-# @app.route("/endangered.html")
-# def endangered():
-    
-#     return render_template("endangered.html")
+@app.route("/fracking")
+def dashboard2():    
+    return render_template("fracking.html")
+
+@app.route("/analysis")
+def dashboard3():    
+    return render_template("analysis.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
