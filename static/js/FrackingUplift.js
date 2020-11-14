@@ -67,7 +67,7 @@ d3.csv("static/data/ProductionData.csv").then(function(coordData) {
     .append("circle")
     .attr("cx", d => xLinearScale(d.XCoord))
     .attr("cy", d => yLinearScale(d.YCoord))
-    .attr("r", d => d.FracUplift*1)
+    .attr("r", d => d.FracUplift*2)
     .attr("fill", "red")
     .attr("opacity", ".5");
 
